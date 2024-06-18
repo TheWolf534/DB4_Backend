@@ -22,6 +22,6 @@ urlpatterns = [
     path('/', views.test, name='test'),
     path('admin/', admin.site.urls),
     path('api/sensor-data/', views.receive_sensor_data, name='receive_sensor_data'),
-    path('api/data-points/', views.get_data_point, name='get_data_points'),
+    path('api/data-points/', views.get_data_points, name='get_data_points'),
     path('api/latest-data-point/', views.get_latest_data_point, name='get_latest_data_point'),
 ]
