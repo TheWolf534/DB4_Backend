@@ -2,6 +2,14 @@ from django.shortcuts import render
 from django.http import JsonResponse, HttpResponseBadRequest
 from .models import SensorData
 import json
+from django.views.decorators.csrf import csrf_exempt
+
+
+@csrf_exempt
+def rule_api(request):
+
+    pass
+
 
 def test(request):
     return JsonResponse({'status': 'success'})
@@ -39,4 +47,4 @@ def get_latest_data_point(request):
     try:
         return JsonResponse({data_points: data_list[-1]})
     except IndexError:
-        return JsonResponse({data_points: None})
+        return JsonResponse({data_points: None})    
