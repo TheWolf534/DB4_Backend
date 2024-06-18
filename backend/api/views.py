@@ -29,11 +29,14 @@ def get_data_points(request):
 
 def get_latest_data_point(request):
     data_points = request.GET.get('data_points')
-    
+
     
     if data_points not in [field.name for field in SensorData._meta.fields]:
         return HttpResponseBadRequest(f'Invalid data point: {data_points}')
     
     data_values = SensorData.objects.values_list(data_points, flat=True)
     data_list = list(data_values)
-    return JsonResponse({data_points: data_list[-1]})
+    try:
+        return JsonResponse({data_points: data_list[-1]})
+    except IndexError:
+        return JsonResponse({data_points: None})
