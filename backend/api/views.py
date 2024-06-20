@@ -44,6 +44,7 @@ def get_latest_data_point(request):
     
     data_values = SensorData.objects.values_list(data_points, flat=True)
     data_list = list(data_values)
+    return(SensorData.objects.filter(id__lt=SensorData.objects.latest('id').id))
     try:
         return JsonResponse({data_points: data_list[-1]})
     except IndexError:
