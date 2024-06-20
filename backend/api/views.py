@@ -3,6 +3,7 @@ from django.http import JsonResponse, HttpResponseBadRequest
 from .models import SensorData
 from django.views.decorators.csrf import csrf_exempt
 from .serializer import SensorDataSerializer
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import generics
 import json
 
@@ -14,6 +15,7 @@ def rule_api(request):
 
 class SensorDataListCreate(generics.ListCreateAPIView):
     serializer_class = SensorDataSerializer
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         return SensorData.objects.all()
@@ -26,6 +28,7 @@ class SensorDataListCreate(generics.ListCreateAPIView):
 
 class LatestSensorData(generics.CreateAPIView):
     serializer_class = SensorDataSerializer
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         return SensorData.objects.filter(id__lt=SensorData.objects.latest('id').id)
