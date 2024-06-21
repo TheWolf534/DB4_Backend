@@ -18,7 +18,7 @@ class SensorDataListCreate(generics.ListCreateAPIView):
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-	if self.request.GET.get('sensor'):
+        if self.request.GET.get('sensor'):
             sensor = self.request.GET.get('sensor')
             return SensorData.objects.values_list(sensor, flat=True)
         return SensorData.objects.all()
