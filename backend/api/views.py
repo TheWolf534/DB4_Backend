@@ -31,7 +31,9 @@ class LatestSensorData(generics.ListAPIView):
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        return SensorData.objects.order_by("timestamp").reverse()
+        print(type(SensorData.objects.all()))
+        return SensorData.objects.order_by("-timestamp")[:1]
+        #return SensorData.objects.order_by("timestamp").last()
 
 def test(request):
     return JsonResponse({'status': 'success'})
