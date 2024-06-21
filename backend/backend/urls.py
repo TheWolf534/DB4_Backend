@@ -22,5 +22,5 @@ urlpatterns = [
     path('/', views.test, name='test'),
     path('admin/', admin.site.urls),
     path('api/sensor-data/', views.SensorDataListCreate.as_view(), name='list-data'),
-    path('api/latest-sensor-data/', views.LatestSensorData.as_view(), name='latest-data'),
+    path('api/sensor-data/latest', views.LatestSensorData.as_view(), name='latest-data'),
 ]
