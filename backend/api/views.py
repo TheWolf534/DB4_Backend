@@ -18,6 +18,9 @@ class SensorDataListCreate(generics.ListCreateAPIView):
     permission_classes = [AllowAny]
 
     def get_queryset(self):
+	if self.request.GET.get('sensor'):
+            sensor = self.request.GET.get('sensor')
+            return SensorData.objects.values_list(sensor, flat=True)
         return SensorData.objects.all()
     
     def perform_create(self, serializer):
@@ -26,12 +29,12 @@ class SensorDataListCreate(generics.ListCreateAPIView):
         else:
             print(serializer.errors)
 
-class LatestSensorData(generics.CreateAPIView):
+class LatestSensorData(generics.ListAPIView):
     serializer_class = SensorDataSerializer
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        return SensorData.objects.filter(id__lt=SensorData.objects.latest('id').id)
+        return SensorData.objects.order_by("timestamp").reverse()
 
 def test(request):
     return JsonResponse({'status': 'success'})
