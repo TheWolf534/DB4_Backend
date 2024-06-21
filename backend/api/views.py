@@ -18,13 +18,6 @@ class SensorDataListCreate(generics.ListCreateAPIView):
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        if self.request.GET.get('sensor'):
-            sensor = self.request.GET.get('sensor')
-            # Filtering based on the sensor type
-            if sensor == 'temperature':
-                return SensorData.objects.exclude(temperature=None)
-            elif sensor == 'concentration':
-                return SensorData.objects.exclude(concentration=None)
         return SensorData.objects.all()
     
     def perform_create(self, serializer):
