@@ -6,7 +6,7 @@ class SensorData(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
 class BoardParameters(models.Model):
-    boardNumber = models.FloatField()
+    boardNumber = models.IntegerField()
     targetTemperature = models.FloatField()
     proportional = models.FloatField()
     integral = models.FloatField()
