@@ -4,9 +4,9 @@ from .models import SensorData, BoardParameters
 class SensorDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = SensorData
-        fields = ["id", "temperature", "concentration","timestamp"]
+        fields = ["id", "temperature", "concentration", "rpm","timestamp"]
 
 class BoardParametersSerializer(serializers.ModelSerializer):
     class Meta:
         model = BoardParameters
-        fields = ["id", "boardNumber", "targetTemperature","proportional","integral","derivative"]
+        fields = ["id", "boardNumber", "targetTemperature", "targetRPM","proportional","integral","derivative"]
