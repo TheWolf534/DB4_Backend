@@ -10,7 +10,7 @@ class BoardParameters(models.Model):
     boardNumber = models.IntegerField()
     targetTemperature = models.FloatField()
     targetRPM = models.FloatField()
-    targetDirection = models.BooleanField()
+    targetDirection = models.BooleanField(default=False)
     proportional = models.FloatField()
     integral = models.FloatField()
     derivative = models.FloatField()
