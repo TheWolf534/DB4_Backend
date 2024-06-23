@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/sensor-data/', views.SensorDataListCreate.as_view(), name='list-data'),
     path('api/sensor-data/latest', views.LatestSensorData.as_view(), name='latest-data'),
-    path('api/board-parameters/', views.BoardParametersListCreate.as_view(), name='board-parameters'),
+    path('api/board-parameters/<int:boardNumber>/', views.BoardParametersRetrieveUpdate.as_view(), name='board-parameters-detail'),
 ]
