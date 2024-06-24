@@ -9,4 +9,4 @@ class SensorDataSerializer(serializers.ModelSerializer):
 class BoardParametersSerializer(serializers.ModelSerializer):
     class Meta:
         model = BoardParameters
-        fields = ["id", "boardNumber", "targetTemperature", "targetRPM", "motorDirection", "proportional","integral","derivative"]
+        fields = ["id", "boardNumber", "targetTemperature", "targetRPM", "motorDirection", "TempProportional", "TempIntegral", "TempDerivative", "ODProportional", "ODIntegral", "ODDerivative"]
